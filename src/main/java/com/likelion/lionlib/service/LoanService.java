@@ -6,6 +6,7 @@ import com.likelion.lionlib.domain.LoanStatus;
 import com.likelion.lionlib.domain.Member;
 import com.likelion.lionlib.dto.LoanRequest;
 import com.likelion.lionlib.dto.LoanResponse;
+import com.likelion.lionlib.exception.LoanNotFoundException;
 import com.likelion.lionlib.repository.LoanRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -55,7 +56,7 @@ public class LoanService {
 
     private Loan findLoanById(Long loanId) {
         return loanRepository.findById(loanId)
-                .orElseThrow(() -> new RuntimeException("Loan not found"));
+                .orElseThrow(() -> new LoanNotFoundException(loanId));
     }
 
     private List<Loan> findLoansByMemberId(Long memberId) {

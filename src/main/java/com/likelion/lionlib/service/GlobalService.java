@@ -17,7 +17,7 @@ public class GlobalService {
 
     public Book findBookById(Long bookId) {
         return bookRepository.findById(bookId)
-                .orElseThrow(() -> new RuntimeException("Book not found"));
+                .orElseThrow(BookNotFoundException::new);
     }
 
     public Member findMemberById(Long memberId) {

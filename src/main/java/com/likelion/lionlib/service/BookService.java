@@ -44,7 +44,7 @@ public class BookService {
     public BookResponse updateBook(Long bookId, BookRequest bookRequest) {
         Book book = globalService.findBookById(bookId);
         Book updatedBook = Book.builder()
-                .id(book.getId()) // 유지된 ID로 Book 객체를 생성
+                .id(book.getId())
                 .title(bookRequest.getTitle())
                 .category(bookRequest.getCategory())
                 .author(bookRequest.getAuthor())
